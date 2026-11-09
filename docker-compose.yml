@@ -1,0 +1,14 @@
+services:
+  backend:
+    build: ./server
+    hostname: raspberry-pi-4b
+    ports:
+      - "1998:1998"
+    restart: unless-stopped
+  frontend:
+    build: ./frontend
+    ports:
+      - "1999:1999"
+    depends_on:
+      - backend
+    restart: unless-stopped
